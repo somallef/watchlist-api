@@ -18,8 +18,6 @@ class OMDBService(
             .execute()
             .body()
 
-    fun buscar(termoPesquisa: String, page: Int) =
+    suspend fun buscar(termoPesquisa: String, page: Int) =
         omdbClient.buscar(termoPesquisa, page, apiKey)
-            .execute()
-            .body()
 }

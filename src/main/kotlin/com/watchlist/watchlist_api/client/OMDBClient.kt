@@ -11,10 +11,10 @@ import retrofit2.http.Query
 interface OMDBClient {
 
     @GET("https://www.omdbapi.com/")
-    fun buscar(@Query("s") termoPesquisa: String,
+    suspend fun buscar(@Query("s") termoPesquisa: String,
                    @Query("page") page: Int,
                    @Query("apiKey") apiKey: String
-                   ): Call<ResultadoPesquisa>
+                   ): ResultadoPesquisa
     @GET("https://www.omdbapi.com/")
     fun buscarPeloImdbId(@Query("i") imdbId: String,
                    @Query("apiKey") apiKey: String

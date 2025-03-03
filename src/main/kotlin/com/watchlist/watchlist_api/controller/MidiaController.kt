@@ -3,6 +3,7 @@ package com.watchlist.watchlist_api.controller
 import com.watchlist.watchlist_api.model.Midia
 import com.watchlist.watchlist_api.model.ResultadoPesquisa
 import com.watchlist.watchlist_api.service.OMDBService
+import kotlinx.coroutines.runBlocking
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.Objects
@@ -17,9 +18,8 @@ class MidiaController(
     fun buscar(
         @RequestParam termoPesquisa: String,
         @RequestParam(defaultValue = "1") page: String
-    ): ResponseEntity<ResultadoPesquisa> {
-        val resultado: ResultadoPesquisa? = omdbService.buscar(termoPesquisa, page.toInt())
-        return ResponseEntity.ok(resultado)
+    ) = runBlocking {
+        omdbService.buscar(termoPesquisa, page.toInt())
     }
 
     @GetMapping("/{imdbId}")
