@@ -1,0 +1,8 @@
+spring:
+  application.name: watchlist-api
+  config:
+    import: optional:file:./.env[.properties]
+api:
+  omdb:
+    base-url: https://www.omdbapi.com/
+    apiKey: ${API_KEY}
